@@ -91,7 +91,6 @@ namespace MemberRegistry.Model.DAL
                         if (reader.Read())
                         {
                             // Tar reda på vilket index de olika kolumnerna har.
-                            //int medIdIndex = reader.GetOrdinal("MedID");
                             int fNamnIndex = reader.GetOrdinal("Fnamn");
                             int eNamnIndex = reader.GetOrdinal("Enamn");
                             int persNrIndex = reader.GetOrdinal("PersNR");
@@ -102,7 +101,7 @@ namespace MemberRegistry.Model.DAL
                             // Returnerar referensen till de skapade Member-objektet.
                             return new Member
                             {
-                                //MedID = reader.GetInt32(medIdIndex),
+                                MedID = memberId,
                                 Fnamn = reader.GetString(fNamnIndex),
                                 Enamn = reader.GetString(eNamnIndex),
                                 PersNR = reader.GetString(persNrIndex),
@@ -174,6 +173,9 @@ namespace MemberRegistry.Model.DAL
                 {
                     SqlCommand cmd = new SqlCommand("appSchema.usp_UpdateMember", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Lägger till den paramter den lagrade proceduren kräver för medlemsid:t.
+                    cmd.Parameters.AddWithValue("@MedID", member.MedID);
 
                     // Lägger till de paramterar den lagrade proceduren kräver.
                     cmd.Parameters.Add("@Fnamn", SqlDbType.VarChar, 20).Value = member.Fnamn;

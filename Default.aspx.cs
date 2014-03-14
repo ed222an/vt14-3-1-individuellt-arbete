@@ -102,7 +102,7 @@ namespace MemberRegistry
         }
 
         // The id parameter name should match the DataKeyNames value set on the control
-        public void MemberListView_DeleteItem(int medID)
+        public void MemberListView_DeleteItem(int medId)
         {
             try
             {
@@ -110,7 +110,7 @@ namespace MemberRegistry
                 string confirmValue = Request.Form["confirm_value"];
                 if (confirmValue == "Yes")
                 {
-                    Service.DeleteMember(medID);
+                    Service.DeleteMember(medId);
                     SuccessMessage = String.Format("Borttagandet av medlemmen lyckades!");
                     Response.Redirect(Request.Path);
                 }

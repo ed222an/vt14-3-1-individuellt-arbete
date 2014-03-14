@@ -139,7 +139,7 @@
                                 ValidationGroup="Validations"></asp:RequiredFieldValidator>
                         </td>
                         <td>
-                            <asp:TextBox ID="Region" runat="server" Text='<%# BindItem.Ort %>' MaxLength="6" />
+                            <asp:TextBox ID="Region" runat="server" Text='<%# BindItem.Ort %>' MaxLength="25" />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
                                 ErrorMessage="Fältet får inte vara tomt!"
                                 ControlToValidate="Region"
@@ -203,7 +203,7 @@
                                 ValidationGroup="Validations"></asp:RequiredFieldValidator>
                         </td>
                         <td>
-                            <asp:TextBox ID="Region1" runat="server" Text='<%# BindItem.Ort %>' MaxLength="6" />
+                            <asp:TextBox ID="Region1" runat="server" Text='<%# BindItem.Ort %>' MaxLength="25" />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
                                 ErrorMessage="Fältet får inte vara tomt!"
                                 ControlToValidate="Region1"

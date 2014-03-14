@@ -1,0 +1,28 @@
+﻿h1 {
+    color:teal;
+    font-weight:bold;
+    font-size:40px;
+}
+
+.alinks
+{
+    color: #333333;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.header {
+    font-weight:bold;
+    font-size:18px;
+    text-decoration:none;
+    color: #333333;
+}
+
+.content {
+   color:teal;
+}
+
+#MainContentPlaceHolder_SuccessMessagePanel {
+    font-size: 40px;
+    color:lightgreen;
+}
