@@ -52,4 +52,35 @@
             </div>
         </ItemTemplate>
     </asp:FormView>
+    <asp:ListView ID="MemberActivityListView" runat="server"
+        ItemType="MemberRegistry.Model.ActivityType"
+        SelectMethod="MemberActivityListView_GetData"
+        DataKeyNames="MedID">
+        <LayoutTemplate>
+            <%-- Platshållare för medlemsaktiviteter --%>
+            <asp:PlaceHolder ID="itemPlaceHolder" runat="server" />
+        </LayoutTemplate>
+        <ItemTemplate>
+            <dl>
+                <dt class="header">
+                    <label for="Aktivitet">Aktivitet</label>
+                </dt>
+                <dd class="content">
+                    <%#: Item.Akttyp %>
+                </dd>
+                <dd class="content">
+                    - Avgiftstatus: <%#: Item.Avgiftstatus %>
+                </dd>
+            </dl>
+        </ItemTemplate>
+        <EmptyDataTemplate>
+            <%-- Detta visas då aktiviteter saknas i databasen. --%>
+            <p>
+                Medlemsaktivitet saknas.
+            </p>
+        </EmptyDataTemplate>
+    </asp:ListView>
+    <h2>
+        Lägg till ny aktivitet
+    </h2>
 </asp:Content>

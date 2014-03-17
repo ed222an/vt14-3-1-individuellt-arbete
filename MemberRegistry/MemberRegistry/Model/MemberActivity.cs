@@ -7,5 +7,6 @@ namespace MemberRegistry.Model
         public int MedAktID { get; set; }
         public int AktID { get; set; }
         public int MedID { get; set; }
+        public string Avgiftstatus { get; set; }
     }
 }

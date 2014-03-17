@@ -2,6 +2,9 @@
 using System.Web.ModelBinding;
 using System.Web.UI;
 using MemberRegistry.Model;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace MemberRegistry.Pages.MemberPages
 {
@@ -25,6 +28,20 @@ namespace MemberRegistry.Pages.MemberPages
             catch (Exception)
             {
                 ModelState.AddModelError(String.Empty, "Fel inträffade då medlemmen hämtades.");
+                return null;
+            }
+        }
+
+        public IEnumerable<MemberRegistry.Model.ActivityType> MemberActivityListView_GetData([RouteData] int id)
+        {
+            try
+            {
+                Service service = new Service();
+                return service.GetMemberActivities(id);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Fel inträffade då medlemmarna skulle hämtas från databasen.");
                 return null;
             }
         }

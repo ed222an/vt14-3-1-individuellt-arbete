@@ -14,7 +14,7 @@ namespace MemberRegistry.Model.DAL
         public IEnumerable<Member> GetMembers()
         {
             // Skapar och initierar ett anslutningsobjekt.
-            using (var conn = CreateConnection())
+            using (SqlConnection conn = CreateConnection())
             {
                 try
                 {

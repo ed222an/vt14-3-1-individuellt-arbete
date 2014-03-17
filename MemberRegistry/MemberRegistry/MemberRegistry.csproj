@@ -75,6 +75,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\Activity.cs" />
+    <Compile Include="Model\ActivityType.cs" />
     <Compile Include="Model\DAL\ActivityDAL.cs" />
     <Compile Include="Model\DAL\DALBase.cs" />
     <Compile Include="Model\DAL\MemberActivityDAL.cs" />
@@ -128,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Shared\Site.Master" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
