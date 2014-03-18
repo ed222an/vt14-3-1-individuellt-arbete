@@ -7,6 +7,8 @@ namespace MemberRegistry.Model
     {
         public int MedID { get; set; }
 
+        public int AktID { get; set; }
+
         [Required(ErrorMessage = "Ett förnamn måste anges.")]
         [StringLength(20, ErrorMessage = "Förnamnet kan bestå av som mest 20 tecken.")]
         public string Fnamn { get; set; }

@@ -32,6 +32,7 @@ namespace MemberRegistry.Pages.MemberPages
             }
         }
 
+        // Hämtar ut medlemsaktiviteterna
         public IEnumerable<MemberRegistry.Model.ActivityType> MemberActivityListView_GetData([RouteData] int id)
         {
             try
@@ -44,6 +45,14 @@ namespace MemberRegistry.Pages.MemberPages
                 ModelState.AddModelError(String.Empty, "Fel inträffade då medlemmarna skulle hämtas från databasen.");
                 return null;
             }
+        }
+
+        // The id parameter name should match the DataKeyNames value set on the control
+        public void MemberActivityListView_UpdateItem([RouteData] int id, int activityId)
+        {
+            Service service = new Service();
+
+            service.AddMemberActivityById(id ,activityId);
         }
     }
 }

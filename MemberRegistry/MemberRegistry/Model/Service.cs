@@ -83,11 +83,6 @@ namespace MemberRegistry.Model
             return ActivityDAL.GetActivities();
         }
 
-        public IEnumerable<Activity> GetActivityById(int activityId)
-        {
-            return ActivityDAL.GetActivityById(activityId);
-        }
-
         #endregion
 
         #region MemberActivities
@@ -97,24 +92,23 @@ namespace MemberRegistry.Model
         {
             return MemberActivityDAL.GetMemberActivitiesById(memberId);
         }
-
-        // Sparar en medlemsaktivitet uppgifter i databasen.
-        public void SaveMemberActivity(MemberActivity memberActivity)
+        // Hämtar en specifik medlemsaktivitet
+        public IEnumerable<ActivityType> GetActivityById(int activityId)
         {
-            // Uppfyller inte objektet affärsreglerna...
-            ICollection<ValidationResult> validationResults;
-            if (!memberActivity.Validate(out validationResults))
-            {
-                // Klarar inte objektet valideringen så kastas ett undantag, samt en referens till valideringssamlingen.
-                var ex = new ValidationException("Objektet klarade inte valideringen.");
-                ex.Data.Add("ValidationResults", validationResults);
-                throw ex;
-            }
-
-            // Lägger till medlemsaktiviteten i databasen.
-            MemberActivityDAL.InsertMemberActivity(memberActivity);
+            return MemberActivityDAL.GetActivityById(activityId);
         }
 
+        // Tar bort en medlemsaktivitet
+        public void DeleteMemberActivityById(int activityId)
+        {
+            MemberActivityDAL.DeleteMemberActivityById(activityId);
+        }
+
+        // Lägger till en medlemsaktivitet i databasen
+        public void AddMemberActivityById(int memberId, int activityId)
+        {
+            MemberActivityDAL.InsertMemberActivity(memberId, activityId);
+        }
         #endregion
     }
 }

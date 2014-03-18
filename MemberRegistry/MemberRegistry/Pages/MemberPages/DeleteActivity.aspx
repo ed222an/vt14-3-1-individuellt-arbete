@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="Delete.aspx.cs" Inherits="MemberRegistry.Pages.MemberPages.Delete" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="DeleteActivity.aspx.cs" Inherits="MemberRegistry.Pages.MemberPages.DeleteActivity" %>
 
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h1>
@@ -11,8 +11,7 @@
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
     <asp:PlaceHolder runat="server" ID="ConfirmationPlaceHolder">
         <p>
-            Är du säker på att du vill ta bort <strong>
-                <asp:Literal runat="server" ID="MemberName" ViewStateMode="Enabled" /></strong>?
+            Är du säker på att du vill ta bort medlemsaktiviteten?
         </p>
     </asp:PlaceHolder>
     <div>

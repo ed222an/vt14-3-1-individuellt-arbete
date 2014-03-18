@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="MemberRegistry.Pages.MemberPages.Details" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+
+<asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h1>
         Medlem
     </h1>
@@ -55,6 +56,7 @@
     <asp:ListView ID="MemberActivityListView" runat="server"
         ItemType="MemberRegistry.Model.ActivityType"
         SelectMethod="MemberActivityListView_GetData"
+        UpdateMethod="MemberActivityListView_UpdateItem"
         DataKeyNames="MedID">
         <LayoutTemplate>
             <%-- Platshållare för medlemsaktiviteter --%>
@@ -79,8 +81,10 @@
                 Medlemsaktivitet saknas.
             </p>
         </EmptyDataTemplate>
+        <EditItemTemplate>
+        <p>
+            Lägg till aktivitet
+        </p>
+        </EditItemTemplate>
     </asp:ListView>
-    <h2>
-        Lägg till ny aktivitet
-    </h2>
 </asp:Content>

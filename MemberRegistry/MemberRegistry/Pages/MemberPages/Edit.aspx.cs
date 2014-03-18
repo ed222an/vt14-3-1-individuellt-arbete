@@ -2,6 +2,7 @@
 using System.Web.ModelBinding;
 using System.Web.UI;
 using MemberRegistry.Model;
+using System.Collections.Generic;
 
 namespace MemberRegistry.Pages.MemberPages
 {
@@ -55,6 +56,20 @@ namespace MemberRegistry.Pages.MemberPages
             catch (Exception)
             {
                 ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då medlemmen skulle uppdateras.");
+            }
+        }
+
+        // Hämtar ut medlemsaktiviteterna
+        public IEnumerable<MemberRegistry.Model.Activity> ActivityDropDownList_GetData()
+        {
+            try
+            {
+                return Service.GetActivities();
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Fel inträffade då medlemmarna skulle hämtas från databasen.");
+                return null;
             }
         }
     }

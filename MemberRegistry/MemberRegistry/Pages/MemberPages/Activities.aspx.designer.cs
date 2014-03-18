@@ -10,7 +10,7 @@
 namespace MemberRegistry.Pages.MemberPages {
     
     
-    public partial class Listing {
+    public partial class Activities {
         
         /// <summary>
         /// SuccessMessagePanel control.
@@ -49,30 +49,12 @@ namespace MemberRegistry.Pages.MemberPages {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
         
         /// <summary>
-        /// HyperLink4 control.
+        /// ActivityListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink4;
-        
-        /// <summary>
-        /// HyperLink1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
-        
-        /// <summary>
-        /// MemberListView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView MemberListView;
+        protected global::System.Web.UI.WebControls.ListView ActivityListView;
     }
 }

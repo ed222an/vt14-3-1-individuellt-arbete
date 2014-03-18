@@ -59,10 +59,13 @@
   <ItemGroup>
     <Content Include="Content\Style.css" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\MemberPages\Activities.aspx" />
     <Content Include="Pages\MemberPages\Create.aspx" />
     <Content Include="Pages\MemberPages\Delete.aspx" />
+    <Content Include="Pages\MemberPages\DeleteActivity.aspx" />
     <Content Include="Pages\MemberPages\Details.aspx" />
     <Content Include="Pages\MemberPages\Edit.aspx" />
+    <Content Include="Pages\MemberPages\EditActivity.aspx" />
     <Content Include="Pages\MemberPages\Listing.aspx" />
     <Content Include="Pages\Shared\ErrorPage.html" />
     <Content Include="Web.config" />
@@ -83,6 +86,13 @@
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\MemberActivity.cs" />
     <Compile Include="Model\Service.cs" />
+    <Compile Include="Pages\MemberPages\Activities.aspx.cs">
+      <DependentUpon>Activities.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MemberPages\Activities.aspx.designer.cs">
+      <DependentUpon>Activities.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MemberPages\Create.aspx.cs">
       <DependentUpon>Create.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -97,6 +107,13 @@
     <Compile Include="Pages\MemberPages\Delete.aspx.designer.cs">
       <DependentUpon>Delete.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MemberPages\DeleteActivity.aspx.cs">
+      <DependentUpon>DeleteActivity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MemberPages\DeleteActivity.aspx.designer.cs">
+      <DependentUpon>DeleteActivity.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MemberPages\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -110,6 +127,13 @@
     </Compile>
     <Compile Include="Pages\MemberPages\Edit.aspx.designer.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MemberPages\EditActivity.aspx.cs">
+      <DependentUpon>EditActivity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MemberPages\EditActivity.aspx.designer.cs">
+      <DependentUpon>EditActivity.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\MemberPages\Listing.aspx.cs">
       <DependentUpon>Listing.aspx</DependentUpon>
@@ -130,6 +154,7 @@
   <ItemGroup>
     <Content Include="Pages\Shared\Site.Master" />
     <Content Include="ClassDiagram1.cd" />
+    <None Include="Properties\PublishProfiles\Kalmar Äventyrare.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

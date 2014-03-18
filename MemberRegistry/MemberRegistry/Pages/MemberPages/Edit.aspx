@@ -5,7 +5,7 @@
         Redigera medlem
     </h1>
     <div>
-        <asp:HyperLink ID="HyperLink3" CssClass="alinks" runat="server" Text="Hem" NavigateUrl='<%$ RouteUrl:routename=Members %>' />
+        <asp:HyperLink ID="HyperLink1" CssClass="alinks" runat="server" Text="Hem" NavigateUrl='<%$ RouteUrl:routename=Members %>' />
     </div>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
     <asp:FormView ID="MemberFormView" runat="server"
