@@ -30,6 +30,7 @@ namespace MemberRegistry.Model
 
         [Required(ErrorMessage = "Ett postnummer måste anges.")]
         [StringLength(6, ErrorMessage = "Postnummret kan bestå av som mest 6 tecken.")]
+        [RegularExpression(@"^\d{3}(?:[-\s]\d{2})?$", ErrorMessage = "Postnummret måste vara i ett av följade format: XXXXX,XXX-XX, XXX XX.")]
         public string PostNR { get; set; }
 
         [Required(ErrorMessage = "En ort måste anges.")]

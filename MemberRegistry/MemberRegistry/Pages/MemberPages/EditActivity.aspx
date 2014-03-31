@@ -25,6 +25,9 @@
                 <dt class="content">
                     <asp:Label ID="Label1" runat="server" Text='<%# Item.Fnamn + " " + Item.Enamn %> '></asp:Label>
                 </dt>
+                <dt class="content">
+                    - Avgiftstatus: <%#: Item.Avgiftstatus %>
+                </dt>
                 <dt class="command">
                     <%-- "Kommandknapp" för att ta bort medlem från aktiviteten --%>
                     <asp:HyperLink ID="HyperLink2" runat="server" Text="Ta bort" NavigateUrl='<%# GetRouteUrl("DeleteActivity", new { id = Item.MedAktID }) %>' />

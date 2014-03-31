@@ -61,6 +61,7 @@
     <Content Include="Global.asax" />
     <Content Include="Pages\MemberPages\Activities.aspx" />
     <Content Include="Pages\MemberPages\Create.aspx" />
+    <Content Include="Pages\MemberPages\CreateMemberActivity.aspx" />
     <Content Include="Pages\MemberPages\Delete.aspx" />
     <Content Include="Pages\MemberPages\DeleteActivity.aspx" />
     <Content Include="Pages\MemberPages\Details.aspx" />
@@ -99,6 +100,13 @@
     </Compile>
     <Compile Include="Pages\MemberPages\Create.aspx.designer.cs">
       <DependentUpon>Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MemberPages\CreateMemberActivity.aspx.cs">
+      <DependentUpon>CreateMemberActivity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MemberPages\CreateMemberActivity.aspx.designer.cs">
+      <DependentUpon>CreateMemberActivity.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\MemberPages\Delete.aspx.cs">
       <DependentUpon>Delete.aspx</DependentUpon>

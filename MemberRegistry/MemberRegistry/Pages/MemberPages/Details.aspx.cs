@@ -47,12 +47,19 @@ namespace MemberRegistry.Pages.MemberPages
             }
         }
 
-        // The id parameter name should match the DataKeyNames value set on the control
+        // Uppdaterar medlemsaktiviteten
         public void MemberActivityListView_UpdateItem([RouteData] int id, int activityId)
         {
-            Service service = new Service();
+            try
+            {
+                Service service = new Service();
 
-            service.AddMemberActivityById(id ,activityId);
+                service.AddMemberActivityById(id, activityId);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Fel inträffade då medlemsaktiviteten skulle uppdateras.");
+            }
         }
     }
 }

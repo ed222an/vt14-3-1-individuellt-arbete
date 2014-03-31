@@ -89,6 +89,7 @@ namespace MemberRegistry.Model.DAL
                             int medAktIdIndex = reader.GetOrdinal("MedAktID");
                             int fNamnIndex = reader.GetOrdinal("Fnamn");
                             int eNamnIndex = reader.GetOrdinal("Enamn");
+                            int avgiftStatusIndex = reader.GetOrdinal("Avgiftstatus"); // FIXA LAGRADE PROCEDUREN!!!!
 
                             // Returnerar referensen till de skapade MemberActivity-objektet.
                             activityMembers.Add(new ActivityType
@@ -96,7 +97,8 @@ namespace MemberRegistry.Model.DAL
                                 AktID = activityID,
                                 MedAktID = reader.GetInt32(medAktIdIndex),
                                 Fnamn = reader.GetString(fNamnIndex),
-                                Enamn = reader.GetString(eNamnIndex)
+                                Enamn = reader.GetString(eNamnIndex),
+                                Avgiftstatus = reader.GetString(avgiftStatusIndex)
                             });
                         }
                     }

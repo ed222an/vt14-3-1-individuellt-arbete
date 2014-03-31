@@ -9,7 +9,7 @@
             Kalmar Äventyrare
         </asp:ContentPlaceHolder>
     </title>
-    <link href="~/Content/Style.css" rel="stylesheet" />
+    <link href="~/Content/Style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <form id="form1" runat="server">

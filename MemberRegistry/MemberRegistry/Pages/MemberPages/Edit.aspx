@@ -70,6 +70,11 @@
                     ErrorMessage="Fältet får inte vara tomt!"
                     ControlToValidate="ZipCode"
                     Display="None"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
+                    ErrorMessage="Postnummret måste vara i ett av följade format: XXXXX,XXX-XX, XXX XX."
+                    ControlToValidate="ZipCode"
+                    Display="None"
+                    ValidationExpression="^\d{3}(?:[-\s]\d{2})?$"></asp:RegularExpressionValidator>
             </div>
             <div>
                 <label for="Region">Ort</label>
