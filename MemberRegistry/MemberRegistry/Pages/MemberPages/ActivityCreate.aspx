@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="CreateMemberActivity.aspx.cs" Inherits="MemberRegistry.Pages.MemberPages.CreateMemberActivity" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="ActivityCreate.aspx.cs" Inherits="MemberRegistry.Pages.MemberPages.CreateMemberActivity" %>
 
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h1>

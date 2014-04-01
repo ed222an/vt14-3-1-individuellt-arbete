@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="DeleteActivity.aspx.cs" Inherits="MemberRegistry.Pages.MemberPages.DeleteActivity" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="ActivityDelete.aspx.cs" Inherits="MemberRegistry.Pages.MemberPages.DeleteActivity" %>
 
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h1>

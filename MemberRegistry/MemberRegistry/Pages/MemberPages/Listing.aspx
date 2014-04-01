@@ -12,7 +12,7 @@
         <asp:HyperLink ID="HyperLink3" CssClass="alinks" runat="server" Text="Hem" NavigateUrl='<%$ RouteUrl:routename=Members %>' />
         <asp:HyperLink ID="HyperLink4" CssClass="alinks" runat="server" Text="Aktiviteter" NavigateUrl='<%$ RouteUrl:routename=Activities %>' />
         <asp:HyperLink ID="HyperLink1" CssClass="alinks" runat="server" NavigateUrl='<%$ RouteUrl:routename=MemberCreate %>' Text="Lägg till ny medlem" />
-        <asp:HyperLink ID="HyperLink5" CssClass="alinks" runat="server" NavigateUrl='<%$ RouteUrl:routename=CreateMemberActivity %>' Text="Lägg till medlem i aktivitetsgrupp" />
+        <asp:HyperLink ID="HyperLink5" CssClass="alinks" runat="server" NavigateUrl='<%$ RouteUrl:routename=ActivityCreate %>' Text="Lägg till medlem i aktivitetsgrupp" />
     </div>
     <asp:ListView ID="MemberListView" runat="server"
         ItemType="MemberRegistry.Model.Member"

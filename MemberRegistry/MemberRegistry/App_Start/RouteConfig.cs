@@ -14,9 +14,10 @@ namespace MemberRegistry
             routes.MapPageRoute("MemberDelete",     "medlemmar/{id}/tabort",    "~/Pages/MemberPages/Delete.aspx");
 
             routes.MapPageRoute("Activities",       "aktiviteter",              "~/Pages/MemberPages/Activities.aspx");
-            routes.MapPageRoute("EditActivity",     "aktiviteter/{id}/redigera","~/Pages/MemberPages/EditActivity.aspx");
-            routes.MapPageRoute("DeleteActivity",   "aktiviteter/{id}/tabort",  "~/Pages/MemberPages/DeleteActivity.aspx");
-            routes.MapPageRoute("CreateMemberActivity", "medlemsaktivitet/ny",  "~/Pages/MemberPages/CreateMemberActivity.aspx");
+            routes.MapPageRoute("ActivityCreate",   "aktiviteter/ny",           "~/Pages/MemberPages/ActivityCreate.aspx");
+            routes.MapPageRoute("ActivityDetails",  "aktiviteter/{id}",         "~/Pages/MemberPages/ActivityDetails.aspx");
+            routes.MapPageRoute("ActivityEdit",     "aktiviteter/{id}/redigera","~/Pages/MemberPages/ActivityEdit.aspx");
+            routes.MapPageRoute("ActivityDelete",   "aktiviteter/{id}/tabort",  "~/Pages/MemberPages/ActivityDelete.aspx");
 
             routes.MapPageRoute("Error",            "serverfel",                "~/Pages/Shared/ErrorPage.html");
 

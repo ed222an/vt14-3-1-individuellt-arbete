@@ -60,13 +60,14 @@
     <Content Include="Content\Style.css" />
     <Content Include="Global.asax" />
     <Content Include="Pages\MemberPages\Activities.aspx" />
+    <Content Include="Pages\MemberPages\ActivityEdit.aspx" />
     <Content Include="Pages\MemberPages\Create.aspx" />
-    <Content Include="Pages\MemberPages\CreateMemberActivity.aspx" />
+    <Content Include="Pages\MemberPages\ActivityCreate.aspx" />
     <Content Include="Pages\MemberPages\Delete.aspx" />
-    <Content Include="Pages\MemberPages\DeleteActivity.aspx" />
+    <Content Include="Pages\MemberPages\ActivityDelete.aspx" />
     <Content Include="Pages\MemberPages\Details.aspx" />
     <Content Include="Pages\MemberPages\Edit.aspx" />
-    <Content Include="Pages\MemberPages\EditActivity.aspx" />
+    <Content Include="Pages\MemberPages\ActivityDetails.aspx" />
     <Content Include="Pages\MemberPages\Listing.aspx" />
     <Content Include="Pages\Shared\ErrorPage.html" />
     <Content Include="Web.config" />
@@ -94,6 +95,13 @@
     <Compile Include="Pages\MemberPages\Activities.aspx.designer.cs">
       <DependentUpon>Activities.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MemberPages\ActivityEdit.aspx.cs">
+      <DependentUpon>ActivityEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MemberPages\ActivityEdit.aspx.designer.cs">
+      <DependentUpon>ActivityEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MemberPages\Create.aspx.cs">
       <DependentUpon>Create.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -101,12 +109,12 @@
     <Compile Include="Pages\MemberPages\Create.aspx.designer.cs">
       <DependentUpon>Create.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MemberPages\CreateMemberActivity.aspx.cs">
-      <DependentUpon>CreateMemberActivity.aspx</DependentUpon>
+    <Compile Include="Pages\MemberPages\ActivityCreate.aspx.cs">
+      <DependentUpon>ActivityCreate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\MemberPages\CreateMemberActivity.aspx.designer.cs">
-      <DependentUpon>CreateMemberActivity.aspx</DependentUpon>
+    <Compile Include="Pages\MemberPages\ActivityCreate.aspx.designer.cs">
+      <DependentUpon>ActivityCreate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\MemberPages\Delete.aspx.cs">
       <DependentUpon>Delete.aspx</DependentUpon>
@@ -115,12 +123,12 @@
     <Compile Include="Pages\MemberPages\Delete.aspx.designer.cs">
       <DependentUpon>Delete.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MemberPages\DeleteActivity.aspx.cs">
-      <DependentUpon>DeleteActivity.aspx</DependentUpon>
+    <Compile Include="Pages\MemberPages\ActivityDelete.aspx.cs">
+      <DependentUpon>ActivityDelete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\MemberPages\DeleteActivity.aspx.designer.cs">
-      <DependentUpon>DeleteActivity.aspx</DependentUpon>
+    <Compile Include="Pages\MemberPages\ActivityDelete.aspx.designer.cs">
+      <DependentUpon>ActivityDelete.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\MemberPages\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>
@@ -136,12 +144,12 @@
     <Compile Include="Pages\MemberPages\Edit.aspx.designer.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MemberPages\EditActivity.aspx.cs">
-      <DependentUpon>EditActivity.aspx</DependentUpon>
+    <Compile Include="Pages\MemberPages\ActivityDetails.aspx.cs">
+      <DependentUpon>ActivityDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\MemberPages\EditActivity.aspx.designer.cs">
-      <DependentUpon>EditActivity.aspx</DependentUpon>
+    <Compile Include="Pages\MemberPages\ActivityDetails.aspx.designer.cs">
+      <DependentUpon>ActivityDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\MemberPages\Listing.aspx.cs">
       <DependentUpon>Listing.aspx</DependentUpon>

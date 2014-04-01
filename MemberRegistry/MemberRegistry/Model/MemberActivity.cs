@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace MemberRegistry.Model
 {
@@ -15,11 +16,11 @@ namespace MemberRegistry.Model
         [Required(ErrorMessage = "Ett startdatum måste anges.")]
         [StringLength(10, ErrorMessage = "Startdatumet kan bestå av som mest 10 tecken.")]
         [RegularExpression(@"^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$", ErrorMessage = "Startdatumet måste vara i formatet ÅÅÅÅ-MM-DD.")]
-        public string Startdatum { get; set; }
+        public DateTime Startdatum { get; set; }
 
         [Required(ErrorMessage = "Ett slutdatum måste anges.")]
         [StringLength(10, ErrorMessage = "Slutdatumet kan bestå av som mest 10 tecken.")]
         [RegularExpression(@"^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$", ErrorMessage = "Slutdatumet måste vara i formatet ÅÅÅÅ-MM-DD.")]
-        public string Slutdatum { get; set; }
+        public DateTime Slutdatum { get; set; }
     }
 }

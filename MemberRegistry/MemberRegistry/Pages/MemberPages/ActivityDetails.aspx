@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="EditActivity.aspx.cs" Inherits="MemberRegistry.Pages.MemberPages.EditActivity" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="ActivityDetails.aspx.cs" Inherits="MemberRegistry.Pages.MemberPages.EditActivity" %>
 
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h1>
@@ -29,8 +29,10 @@
                     - Avgiftstatus: <%#: Item.Avgiftstatus %>
                 </dt>
                 <dt class="command">
+                    <%-- "Kommandknapp" för att redigera medlemsaktivitet --%>
+                    <asp:HyperLink ID="HyperLink3" runat="server" Text="Redigera" NavigateUrl='<%# GetRouteUrl("ActivityEdit", new { id = Item.MedAktID }) %>' />
                     <%-- "Kommandknapp" för att ta bort medlem från aktiviteten --%>
-                    <asp:HyperLink ID="HyperLink2" runat="server" Text="Ta bort" NavigateUrl='<%# GetRouteUrl("DeleteActivity", new { id = Item.MedAktID }) %>' />
+                    <asp:HyperLink ID="HyperLink2" runat="server" Text="Ta bort" NavigateUrl='<%# GetRouteUrl("ActivityDelete", new { id = Item.MedAktID }) %>' />
                 </dt>
             </dl>
         </ItemTemplate>

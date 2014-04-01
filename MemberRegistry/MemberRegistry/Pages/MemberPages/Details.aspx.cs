@@ -46,20 +46,5 @@ namespace MemberRegistry.Pages.MemberPages
                 return null;
             }
         }
-
-        // Uppdaterar medlemsaktiviteten
-        public void MemberActivityListView_UpdateItem([RouteData] int id, int activityId)
-        {
-            try
-            {
-                Service service = new Service();
-
-                service.AddMemberActivityById(id, activityId);
-            }
-            catch (Exception)
-            {
-                ModelState.AddModelError(String.Empty, "Fel inträffade då medlemsaktiviteten skulle uppdateras.");
-            }
-        }
     }
 }

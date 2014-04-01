@@ -56,7 +56,6 @@
     <asp:ListView ID="MemberActivityListView" runat="server"
         ItemType="MemberRegistry.Model.ActivityType"
         SelectMethod="MemberActivityListView_GetData"
-        UpdateMethod="MemberActivityListView_UpdateItem"
         DataKeyNames="MedID">
         <LayoutTemplate>
             <%-- Platshållare för medlemsaktiviteter --%>
@@ -81,10 +80,5 @@
                 Medlemsaktivitet saknas.
             </p>
         </EmptyDataTemplate>
-        <EditItemTemplate>
-        <p>
-            Lägg till aktivitet
-        </p>
-        </EditItemTemplate>
     </asp:ListView>
 </asp:Content>

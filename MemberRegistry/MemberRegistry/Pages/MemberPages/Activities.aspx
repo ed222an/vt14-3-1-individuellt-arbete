@@ -22,7 +22,7 @@
         <ItemTemplate>
             <dl>
                 <dt class="header">
-                    <asp:HyperLink ID="HyperLink" runat="server" NavigateUrl='<%# GetRouteUrl("EditActivity", new { id = Item.AktID })  %>' Text='<%# Item.Akttyp %> ' />
+                    <asp:HyperLink ID="HyperLink" runat="server" NavigateUrl='<%# GetRouteUrl("ActivityDetails", new { id = Item.AktID })  %>' Text='<%# Item.Akttyp %> ' />
                 </dt>
             </dl>
         </ItemTemplate>

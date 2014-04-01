@@ -92,10 +92,17 @@ namespace MemberRegistry.Model
         {
             return MemberActivityDAL.GetMemberActivitiesById(memberId);
         }
-        // Hämtar en specifik medlemsaktivitet
+
+        // Hämtar en specifik medlemsaktivitet och dess medlemmar
         public IEnumerable<ActivityType> GetActivityById(int activityId)
         {
             return MemberActivityDAL.GetActivityById(activityId);
+        }
+
+        // Hämtar en specifik medlemsaktivitet
+        public MemberActivity GetMemberActivityById(int memberActivityId)
+        {
+            return MemberActivityDAL.GetMemberActivityById(memberActivityId);
         }
 
         // Tar bort en medlemsaktivitet
@@ -105,9 +112,27 @@ namespace MemberRegistry.Model
         }
 
         // Lägger till en medlemsaktivitet i databasen
-        public void AddMemberActivityById(int memberId, int activityId)
+        public void SaveMemberActivity(ActivityType activityType)
         {
-            MemberActivityDAL.InsertMemberActivity(memberId, activityId);
+            // Uppfyller inte objektet affärsreglerna...
+            ICollection<ValidationResult> validationResults;
+            if (!activityType.Validate(out validationResults))
+            {
+                // Klarar inte objektet valideringen så kastas ett undantag, samt en referens till valideringssamlingen.
+                var ex = new ValidationException("Objektet klarade inte valideringen.");
+                ex.Data.Add("ValidationResults", validationResults);
+                throw ex;
+            }
+
+            // Sparar contact-objektet. Är MedAktID 0 skapas en ny medlemsaktivitet...
+            if (activityType.MedAktID == 0)
+            {
+                MemberActivityDAL.InsertMemberActivity(activityType);
+            }
+            else //...annars uppdateras en befintlig.
+            {
+                MemberActivityDAL.UpdateMemberActivity(activityType);
+            }
         }
         #endregion
     }

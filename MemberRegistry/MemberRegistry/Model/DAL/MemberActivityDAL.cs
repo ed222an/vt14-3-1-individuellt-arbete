@@ -89,7 +89,9 @@ namespace MemberRegistry.Model.DAL
                             int medAktIdIndex = reader.GetOrdinal("MedAktID");
                             int fNamnIndex = reader.GetOrdinal("Fnamn");
                             int eNamnIndex = reader.GetOrdinal("Enamn");
-                            int avgiftStatusIndex = reader.GetOrdinal("Avgiftstatus"); // FIXA LAGRADE PROCEDUREN!!!!
+                            int avgiftStatusIndex = reader.GetOrdinal("Avgiftstatus");
+                            int startDatumIndex = reader.GetOrdinal("Startdatum");
+                            int slutDatumIndex = reader.GetOrdinal("Slutdatum");
 
                             // Returnerar referensen till de skapade MemberActivity-objektet.
                             activityMembers.Add(new ActivityType
@@ -98,7 +100,9 @@ namespace MemberRegistry.Model.DAL
                                 MedAktID = reader.GetInt32(medAktIdIndex),
                                 Fnamn = reader.GetString(fNamnIndex),
                                 Enamn = reader.GetString(eNamnIndex),
-                                Avgiftstatus = reader.GetString(avgiftStatusIndex)
+                                Avgiftstatus = reader.GetString(avgiftStatusIndex),
+                                Startdatum = reader.GetDateTime(startDatumIndex),
+                                Slutdatum = reader.GetDateTime(slutDatumIndex)
                             });
                         }
                     }
@@ -145,8 +149,61 @@ namespace MemberRegistry.Model.DAL
             }
         }
 
+        // Hämtar en specifik medlemsaktivitet i databasen.
+        public MemberActivity GetMemberActivityById(int memberActivityId)
+        {
+            // Skapar och initierar ett anslutningsobjekt.
+            using (SqlConnection conn = CreateConnection())
+            {
+                try
+                {
+                    // Skapar och initierar ett SqlCommand-objekt som används till att exekveras specifierad lagrad procedur.
+                    SqlCommand cmd = new SqlCommand("appSchema.usp_GetMemberActivityById", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Lägger till den paramter den lagrade proceduren kräver.
+                    cmd.Parameters.AddWithValue("@MedAktID", memberActivityId);
+
+                    // Öppnar anslutningen till databasen.
+                    conn.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        // Så länge som det finns poster att läsa returnerar Read true och läsningen fortsätter.
+                        if (reader.Read())
+                        {
+                            // Tar reda på vilket index de olika kolumnerna har.
+                            int aktIdIndex = reader.GetOrdinal("AktID");
+                            int medIdIndex = reader.GetOrdinal("MedID");
+                            int avgiftStatusIndex = reader.GetOrdinal("Avgiftstatus");
+                            int startDatumIndex = reader.GetOrdinal("Startdatum");
+                            int slutDatumIndex = reader.GetOrdinal("Slutdatum");
+
+                            // Returnerar referensen till de skapade MemberActivity-objektet.
+                            return new MemberActivity
+                            {
+                                MedAktID = memberActivityId,
+                                AktID = reader.GetInt32(aktIdIndex),
+                                MedID = reader.GetInt32(medIdIndex),
+                                Avgiftstatus = reader.GetString(avgiftStatusIndex),
+                                Startdatum = reader.GetDateTime(startDatumIndex),
+                                Slutdatum = reader.GetDateTime(slutDatumIndex)
+                            };
+                        }
+                    }
+
+                    return null;
+                }
+                catch
+                {
+                    // Kastar ett eget undantag om ett undantag kastas.
+                    throw new ApplicationException("An error occured in the data access layer.");
+                }
+            }
+        }
+
         // Skapar en ny post i tabellen Medlem.
-        public void InsertMemberActivity(int memberId, int activityId)
+        public void InsertMemberActivity(ActivityType activityType)
         {
             // Skapar och initierar ett anslutningsobjekt.
             using (SqlConnection conn = CreateConnection())
@@ -158,8 +215,8 @@ namespace MemberRegistry.Model.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Lägger till de paramterar den lagrade proceduren kräver.
-                    cmd.Parameters.Add("@MedID", SqlDbType.Int).Value = memberId;
-                    cmd.Parameters.Add("@AktID", SqlDbType.Int).Value = activityId;
+                    cmd.Parameters.Add("@MedID", SqlDbType.Int).Value = activityType.MedID;
+                    cmd.Parameters.Add("@AktID", SqlDbType.Int).Value = activityType.AktID;
 
                     // Hämtar data från den lagrade proceduren.
                     cmd.Parameters.Add("@MedAktID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
@@ -172,7 +229,43 @@ namespace MemberRegistry.Model.DAL
                     cmd.ExecuteNonQuery();
 
                     // Hämtar primärnyckelns värde för den nya posten och tilldelar MemberActivity-objektet värdet.
-                    //memberActivity.MedAktID = (int)cmd.Parameters["@MedAktID"].Value;
+                    activityType.MedAktID = (int)cmd.Parameters["@MedAktID"].Value;
+                }
+                catch
+                {
+                    // Kastar ett eget undantag om ett undantag kastas.
+                    throw new ApplicationException("An error occured in the data access layer.");
+                }
+            }
+        }
+
+        // Uppdaterar en post i medlemsaktivitettabellen.
+        public void UpdateMemberActivity(MemberActivity memberActivity)
+        {
+            // Skapar och initierar ett anslutningsobjekt.
+            using (SqlConnection conn = CreateConnection())
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("appSchema.usp_UpdateMemberActivity", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Lägger till den paramter den lagrade proceduren kräver för medlemsaktivitetID:t.
+                    cmd.Parameters.AddWithValue("@MedAktID", memberActivity.MedAktID);
+
+                    // Lägger till de paramterar den lagrade proceduren kräver.
+                    cmd.Parameters.Add("@AktID", SqlDbType.Int).Value = memberActivity.AktID;
+                    cmd.Parameters.Add("@MedID", SqlDbType.Int).Value = memberActivity.MedID;
+                    cmd.Parameters.Add("@Avgiftstatus", SqlDbType.VarChar, 7).Value = memberActivity.Avgiftstatus;
+                    cmd.Parameters.Add("@Startdatum", SqlDbType.Date).Value = memberActivity.Startdatum;
+                    cmd.Parameters.Add("@Slutdatum", SqlDbType.Date).Value = memberActivity.Slutdatum;
+
+                    // Öppnar anslutningen till databasen.
+                    conn.Open();
+
+                    // Den lagrade proceduren innehåller en UPDATE-sats och returnerar inga poster varför metoden 
+                    // ExecuteNonQuery används för att exekvera den lagrade proceduren.
+                    cmd.ExecuteNonQuery();
                 }
                 catch
                 {
