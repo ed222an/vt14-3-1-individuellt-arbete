@@ -12,6 +12,7 @@
         ItemType="MemberRegistry.Model.ActivityType"
         DefaultMode="Insert"
         RenderOuterTable="false"
+        DataKeyNames="MedAktID, MedID, AktID"
         InsertMethod="MemberActivityFormView_InsertItem">
         <InsertItemTemplate>
             <div>
@@ -19,7 +20,7 @@
             </div>
             <div>
                 <asp:DropDownList ID="MemberDropDownList" runat="server"
-                    ItemType="MemberRegistry.Model.Member"
+                    ItemType="MemberRegistry.Model.ActivityType"
                     SelectMethod="MemberDropDownList_GetData"
                     DataTextField="Namn"
                     DataValueField="MedID"

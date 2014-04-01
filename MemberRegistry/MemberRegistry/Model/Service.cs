@@ -100,7 +100,7 @@ namespace MemberRegistry.Model
         }
 
         // Hämtar en specifik medlemsaktivitet
-        public MemberActivity GetMemberActivityById(int memberActivityId)
+        public ActivityType GetMemberActivityById(int memberActivityId)
         {
             return MemberActivityDAL.GetMemberActivityById(memberActivityId);
         }

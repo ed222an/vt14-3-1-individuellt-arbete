@@ -25,17 +25,17 @@ namespace MemberRegistry.Pages.MemberPages
 
         }
 
-        public void MemberActivityFormView_InsertItem(MemberActivity memberActivity)
+        public void MemberActivityFormView_InsertItem(ActivityType activityType)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    //Service.SaveMemberActivity(memberActivity);
+                    Service.SaveMemberActivity(activityType);
 
                     // Sparar ett rättmeddelande i en temporär sessionsvariabel och dirigerar användaren till listan med medlemmar.
                     Page.SetTempData("SuccessMessage", "Medlemsaktiviteten lades till!");
-                    Response.RedirectToRoute("EditActivity", new { id = memberActivity.AktID });
+                    Response.RedirectToRoute("EditActivity", new { id = activityType.AktID });
                     Context.ApplicationInstance.CompleteRequest();
                 }
                 catch (Exception)

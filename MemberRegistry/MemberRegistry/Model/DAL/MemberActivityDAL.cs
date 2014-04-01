@@ -90,8 +90,6 @@ namespace MemberRegistry.Model.DAL
                             int fNamnIndex = reader.GetOrdinal("Fnamn");
                             int eNamnIndex = reader.GetOrdinal("Enamn");
                             int avgiftStatusIndex = reader.GetOrdinal("Avgiftstatus");
-                            int startDatumIndex = reader.GetOrdinal("Startdatum");
-                            int slutDatumIndex = reader.GetOrdinal("Slutdatum");
 
                             // Returnerar referensen till de skapade MemberActivity-objektet.
                             activityMembers.Add(new ActivityType
@@ -100,9 +98,7 @@ namespace MemberRegistry.Model.DAL
                                 MedAktID = reader.GetInt32(medAktIdIndex),
                                 Fnamn = reader.GetString(fNamnIndex),
                                 Enamn = reader.GetString(eNamnIndex),
-                                Avgiftstatus = reader.GetString(avgiftStatusIndex),
-                                Startdatum = reader.GetDateTime(startDatumIndex),
-                                Slutdatum = reader.GetDateTime(slutDatumIndex)
+                                Avgiftstatus = reader.GetString(avgiftStatusIndex)
                             });
                         }
                     }
@@ -150,7 +146,7 @@ namespace MemberRegistry.Model.DAL
         }
 
         // Hämtar en specifik medlemsaktivitet i databasen.
-        public MemberActivity GetMemberActivityById(int memberActivityId)
+        public ActivityType GetMemberActivityById(int memberActivityId)
         {
             // Skapar och initierar ett anslutningsobjekt.
             using (SqlConnection conn = CreateConnection())
@@ -176,18 +172,19 @@ namespace MemberRegistry.Model.DAL
                             int aktIdIndex = reader.GetOrdinal("AktID");
                             int medIdIndex = reader.GetOrdinal("MedID");
                             int avgiftStatusIndex = reader.GetOrdinal("Avgiftstatus");
-                            int startDatumIndex = reader.GetOrdinal("Startdatum");
-                            int slutDatumIndex = reader.GetOrdinal("Slutdatum");
+                            int fNamnIndex = reader.GetOrdinal("Fnamn");
+                            int eNamnIndex = reader.GetOrdinal("Enamn");
+                            int aktTypIndex = reader.GetOrdinal("Akttyp");
 
                             // Returnerar referensen till de skapade MemberActivity-objektet.
-                            return new MemberActivity
+                            return new ActivityType
                             {
                                 MedAktID = memberActivityId,
                                 AktID = reader.GetInt32(aktIdIndex),
                                 MedID = reader.GetInt32(medIdIndex),
                                 Avgiftstatus = reader.GetString(avgiftStatusIndex),
-                                Startdatum = reader.GetDateTime(startDatumIndex),
-                                Slutdatum = reader.GetDateTime(slutDatumIndex)
+                                Fnamn = reader.GetString(fNamnIndex),
+                                Enamn = reader.GetString(eNamnIndex)
                             };
                         }
                     }
@@ -257,8 +254,6 @@ namespace MemberRegistry.Model.DAL
                     cmd.Parameters.Add("@AktID", SqlDbType.Int).Value = memberActivity.AktID;
                     cmd.Parameters.Add("@MedID", SqlDbType.Int).Value = memberActivity.MedID;
                     cmd.Parameters.Add("@Avgiftstatus", SqlDbType.VarChar, 7).Value = memberActivity.Avgiftstatus;
-                    cmd.Parameters.Add("@Startdatum", SqlDbType.Date).Value = memberActivity.Startdatum;
-                    cmd.Parameters.Add("@Slutdatum", SqlDbType.Date).Value = memberActivity.Slutdatum;
 
                     // Öppnar anslutningen till databasen.
                     conn.Open();

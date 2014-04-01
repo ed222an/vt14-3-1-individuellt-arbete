@@ -34,7 +34,7 @@ namespace MemberRegistry.Pages.MemberPages
             }
         }
 
-        // The id parameter name should match the DataKeyNames value set on the control
+        // Uppdaterar en medlemsaktivitet.
         public void MemberActivityFormView_UpdateItem(int medAktId)
         {
             try
@@ -52,7 +52,7 @@ namespace MemberRegistry.Pages.MemberPages
                 {
                     // Sparar ett rättmeddelande i en temporär sessionsvariabel och dirigerar användaren till listan med medlemsaktiviteter.
                     Service.SaveMemberActivity(memberActivity);
-                    Response.RedirectToRoute("ActivityDetails", new { id = memberActivity.MedaktID });
+                    Response.RedirectToRoute("ActivityDetails", new { id = memberActivity.AktID });
                     Context.ApplicationInstance.CompleteRequest();
                 }
             }
@@ -62,15 +62,18 @@ namespace MemberRegistry.Pages.MemberPages
             }
         }
 
-        // The return type can be changed to IEnumerable, however to support
-        // paging and sorting, the following parameters must be added:
-        //     int maximumRows
-        //     int startRowIndex
-        //     out int totalRowCount
-        //     string sortByExpression
-        public IQueryable<MemberRegistry.Model.ActivityType> ActivityTypeListView_GetData()
+        // Listar medlemmen som ska göras om.
+        public MemberRegistry.Model.ActivityType ActivityTypeListView_GetData([RouteData] int id)
         {
-            return null;
+            try
+            {
+                return Service.GetMemberActivityById(id);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då medlemmen skulle uppdateras.");
+                return null;
+            }
         }
     }
 }

@@ -20,7 +20,7 @@
         <ItemTemplate>
             <dl>
                 <dt class="content">
-                    <asp:Label ID="Label1" runat="server" Text='<%# Item.Fnamn + " " + Item.Enamn %> '></asp:Label>
+                    <%# Item.Fnamn + " " + Item.Enamn %>
                 </dt>
                 <dt class="content">
                     - Avgiftstatus: <%#: Item.Avgiftstatus %>
@@ -43,7 +43,7 @@
         UpdateMethod="MemberActivityFormView_UpdateItem">
         <EditItemTemplate>
             <div>
-                <label for="FeeStatus">Avgiftstatus</label>
+                <label for="FeeStatus">Redigera avgiftstatus</label>
             </div>
             <div>
                 <asp:TextBox ID="FeeStatus" runat="server" Text='<%# BindItem.Avgiftstatus %>' MaxLength="7" />
@@ -55,7 +55,7 @@
             <div>
                 <%-- "Kommandknappar" för att lägga till en ny kontaktuppgift och rensa texfälten --%>
                 <asp:LinkButton ID="LinkButton" runat="server" CommandName="Update" Text="Spara" />
-                <asp:HyperLink ID="HyperLink" runat="server" Text="Avbryt" NavigateUrl='<%# GetRouteUrl("ActivityDetails", new { id = Item.MedAktID }) %>' />
+                <asp:HyperLink ID="HyperLink" runat="server" Text="Avbryt" NavigateUrl='<%# GetRouteUrl("ActivityDetails", new { id = Item.AktID }) %>' />
             </div>
         </EditItemTemplate>
     </asp:FormView>
