@@ -146,7 +146,7 @@ namespace MemberRegistry.Model.DAL
         }
 
         // Hämtar en specifik medlemsaktivitet i databasen.
-        public ActivityType GetMemberActivityById(int memberActivityId)
+        public MemberActivity GetMemberActivityById(int memberActivityId)
         {
             // Skapar och initierar ett anslutningsobjekt.
             using (SqlConnection conn = CreateConnection())
@@ -200,7 +200,7 @@ namespace MemberRegistry.Model.DAL
         }
 
         // Skapar en ny post i tabellen Medlem.
-        public void InsertMemberActivity(ActivityType activityType)
+        public void InsertMemberActivity(MemberActivity memberActivity)
         {
             // Skapar och initierar ett anslutningsobjekt.
             using (SqlConnection conn = CreateConnection())
@@ -212,8 +212,9 @@ namespace MemberRegistry.Model.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Lägger till de paramterar den lagrade proceduren kräver.
-                    cmd.Parameters.Add("@MedID", SqlDbType.Int).Value = activityType.MedID;
-                    cmd.Parameters.Add("@AktID", SqlDbType.Int).Value = activityType.AktID;
+                    cmd.Parameters.Add("@MedID", SqlDbType.Int).Value = memberActivity.MedID;
+                    cmd.Parameters.Add("@AktID", SqlDbType.Int).Value = memberActivity.AktID;
+                    cmd.Parameters.Add("@Avgiftstatus", SqlDbType.VarChar, 7).Value = memberActivity.Avgiftstatus;
 
                     // Hämtar data från den lagrade proceduren.
                     cmd.Parameters.Add("@MedAktID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
@@ -226,7 +227,7 @@ namespace MemberRegistry.Model.DAL
                     cmd.ExecuteNonQuery();
 
                     // Hämtar primärnyckelns värde för den nya posten och tilldelar MemberActivity-objektet värdet.
-                    activityType.MedAktID = (int)cmd.Parameters["@MedAktID"].Value;
+                    memberActivity.MedAktID = (int)cmd.Parameters["@MedAktID"].Value;
                 }
                 catch
                 {

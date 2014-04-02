@@ -35,7 +35,7 @@
         </EmptyDataTemplate>
     </asp:ListView>
     <asp:FormView ID="MemberActivityFormView" runat="server"
-        ItemType="MemberRegistry.Model.ActivityType"
+        ItemType="MemberRegistry.Model.MemberActivity"
         DataKeyNames="MedAktID"
         DefaultMode="Edit"
         RenderOuterTable="false"

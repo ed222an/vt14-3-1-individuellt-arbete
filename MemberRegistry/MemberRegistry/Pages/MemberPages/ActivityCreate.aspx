@@ -9,26 +9,51 @@
     </div>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Ett fel har inträffat. Korrigera felet och försök igen." />
     <asp:FormView ID="MemberActivityFormView" runat="server"
-        ItemType="MemberRegistry.Model.ActivityType"
+        ItemType="MemberRegistry.Model.MemberActivity"
         DefaultMode="Insert"
         RenderOuterTable="false"
         DataKeyNames="MedAktID, MedID, AktID"
         InsertMethod="MemberActivityFormView_InsertItem">
         <InsertItemTemplate>
             <div>
-                <label for="Members">Välj medlem</label>
+                <label for="Members">Välj medlem & aktivitet</label>
             </div>
             <div>
+                <%-- Lista med medlemmar --%>
                 <asp:DropDownList ID="MemberDropDownList" runat="server"
-                    ItemType="MemberRegistry.Model.ActivityType"
+                    ItemType="MemberRegistry.Model.Member"
                     SelectMethod="MemberDropDownList_GetData"
-                    DataTextField="Namn"
+                    DataTextField="Fnamn"
                     DataValueField="MedID"
-                    SelectedValue='<%# BindItem.MedAktID %>'></asp:DropDownList>
+                    SelectedValue='<%# BindItem.MedID %>'></asp:DropDownList>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                     ErrorMessage="En medlem måste väljas!"
-                    ControlToValidate="Members"
+                    ControlToValidate="MemberDropDownList"
                     Display="None"></asp:RequiredFieldValidator>
+
+                <%-- Lista med aktiviteter --%>
+                <asp:DropDownList ID="ActivityDropDownList" runat="server"
+                    ItemType="MemberRegistry.Model.Activity"
+                    SelectMethod="ActivityDropDownList_GetData"
+                    DataTextField="AktTyp"
+                    DataValueField="AktID"
+                    SelectedValue='<%# BindItem.AktID %>'></asp:DropDownList>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                    ErrorMessage="En aktivitet måste väljas!"
+                    ControlToValidate="ActivityDropDownList"
+                    Display="None"></asp:RequiredFieldValidator>
+
+                <%-- Textfält för avgiftstatus --%>
+                <div>
+                    <label for="FeeStatus">Avgiftstatus</label>
+                </div>
+                <div>
+                    <asp:TextBox ID="FeeStatus" runat="server" Text='<%# BindItem.Avgiftstatus %>' MaxLength="7" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                        ErrorMessage="Fältet får inte vara tomt!"
+                        ControlToValidate="FeeStatus"
+                        Display="None"></asp:RequiredFieldValidator>
+                </div>
             </div>
             <div>
                 <%-- "Kommandknappar" för att lägga till en ny kontaktuppgift och rensa texfälten --%>

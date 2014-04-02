@@ -69,10 +69,10 @@
                     ControlToValidate="ZipCode"
                     Display="None"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
-                    ErrorMessage="Postnummret måste vara i ett av följade format: XXXXX,XXX-XX, XXX XX."
+                    ErrorMessage="Postnummret måste vara i formatet XXXXX"
                     ControlToValidate="ZipCode"
                     Display="None"
-                    ValidationExpression="^\d{3}(?:[-\s]\d{2})?$"></asp:RegularExpressionValidator>
+                    ValidationExpression="^\d{5}$"></asp:RegularExpressionValidator>
             </div>
             <div>
                 <label for="Region">Ort</label>

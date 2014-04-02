@@ -25,7 +25,7 @@ namespace MemberRegistry.Pages.MemberPages
         {
             try
             {
-                return Service.GetMemberActivityById(id); // Ändra
+                return Service.GetMemberActivityById(id);
             }
             catch (Exception)
             {
@@ -63,7 +63,7 @@ namespace MemberRegistry.Pages.MemberPages
         }
 
         // Listar medlemmen som ska göras om.
-        public MemberRegistry.Model.ActivityType ActivityTypeListView_GetData([RouteData] int id)
+        public MemberRegistry.Model.MemberActivity ActivityTypeListView_GetData([RouteData] int id)
         {
             try
             {

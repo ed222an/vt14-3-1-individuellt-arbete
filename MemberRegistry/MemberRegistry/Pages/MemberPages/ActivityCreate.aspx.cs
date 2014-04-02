@@ -20,22 +20,17 @@ namespace MemberRegistry.Pages.MemberPages
             get { return _service ?? (_service = new Service()); }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        public void MemberActivityFormView_InsertItem(ActivityType activityType)
+        public void MemberActivityFormView_InsertItem(MemberActivity memberActivity)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    Service.SaveMemberActivity(activityType);
+                    Service.SaveMemberActivity(memberActivity);
 
                     // Sparar ett rättmeddelande i en temporär sessionsvariabel och dirigerar användaren till listan med medlemmar.
                     Page.SetTempData("SuccessMessage", "Medlemsaktiviteten lades till!");
-                    Response.RedirectToRoute("EditActivity", new { id = activityType.AktID });
+                    Response.RedirectToRoute("Members", null);
                     Context.ApplicationInstance.CompleteRequest();
                 }
                 catch (Exception)
@@ -46,9 +41,15 @@ namespace MemberRegistry.Pages.MemberPages
         }
 
         // Hämtar medlemmarna och lägger dem i dropdownlistan.
-        //public IEnumerable<ActivityType> ContactTypeDropDownList_GetData()
-        //{
-        //    return Service.GetMembers();
-        //}
+        public IEnumerable<Member> MemberDropDownList_GetData()
+        {
+            return Service.GetMembers();
+        }
+        
+        // Hämtar aktiviteter och lägger dem i dropdownlistan.
+        public IEnumerable<Activity> ActivityDropDownList_GetData()
+        {
+            return Service.GetActivities();
+        }
     }
 }

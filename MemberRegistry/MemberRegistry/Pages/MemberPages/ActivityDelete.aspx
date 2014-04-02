@@ -15,7 +15,7 @@
         </p>
     </asp:PlaceHolder>
     <div>
-        <asp:LinkButton runat="server" ID="DeleteLinkButton" Text="Ja, ta bort medlemmen"
+        <asp:LinkButton runat="server" ID="DeleteLinkButton" Text="Ja, ta bort medlemsaktiviteten"
             OnCommand="DeleteLinkButton_Command" CommandArgument='<%$ RouteValue:id %>' />
         <asp:HyperLink runat="server" ID="CancelHyperLink" Text="Avbryt" />
     </div>
